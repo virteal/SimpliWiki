@@ -1,0 +1,30 @@
+Your name: <input type="text" name="yourname" value="World"/>
+
+<hr/>
+
+Hello {{yourname}}!
+
+<a href="http://www.angularjs.org/">
+  www.angularjs.org
+</a>
+
+
+<div class="hide">
+
+ -----
+
+!!!To "run" this Angular page, click on "run" in the top menu
+
+See also HelpAngular & HelpApi
+
+If you want to know more about Angular, either visit the web site angularjs.org or watch this presentation:
+  http://www.youtube.com/watch?v=0iQCLlu1dko
+
+</div>
+
+
+
+---
+prefetched: true
+
+@jhr - 2011-01-29T07:00:53.269Z

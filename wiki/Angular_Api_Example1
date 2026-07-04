@@ -1,0 +1,130 @@
+This is a simple example about the SimpliWiki API and Angular.
+
+<div class="hide">
+See also HelpAngular & HelpApi
+</div>
+
+<script type="text/javascript">
+
+API = sw_api();
+
+function sw_dump( obj, indent ){
+  indent || (indent = "  ");
+  var str     = "";
+  var key;
+  var value;
+  for( key in obj ){
+    value = obj[key];
+    if( key == "ctx" ){
+      str += "\n" + indent + "ctx:"
+      + sw_dump( value, "    ")
+    }else{
+      str += "\n" + indent + key + ": " + value;
+    }
+  }
+  return str;
+}
+
+function ApiDemo(){
+  var session  = API.getSession();
+  this.name    = session.login;
+  this.info    = sw_dump( session);
+  this.page    = "RestPage";
+  this.content = "no content yet";
+  this.add     = "";   
+  this.rest    = "";
+  this.result  = "";
+}
+
+function sw_result( that, result ){
+   that.rest    = "";
+   that.result  = sw_dump( result);
+   that.content
+   = result.body || result.status;
+   that.$eval();
+}
+
+ApiDemo.prototype = {
+
+  getPage: function(){
+    this.rest = "working...";
+    var that = this;
+    API.clearPageCache( this.page);
+    API.getPage(
+      this.page,
+      function( result ){
+        sw_result( that, result)
+      }
+    )
+  },
+
+  putPage: function(){
+    this.rest = "working...";
+    var that = this;
+    API.putPage(
+      this.page,
+      this.content,
+      null,
+      function( result ){
+        sw_result( that, result)
+      }
+    )
+  },
+
+  appendPage: function(){
+    this.rest = "working...";
+    var that = this;
+    API.appendPage(
+      this.page,
+      "\n" + this.add,
+      function( result ){
+        sw_result( that, result)
+      }
+    )
+  }
+
+}
+
+</script>
+
+<hr>
+
+See <a href="/HelpApi">HelpApi</a>,
+ <a href="/HelpAngular">HelpAngular</a>
+
+<div ng:controller="ApiDemo">
+
+<h3>.getSession()</h3>
+Name: {{name}} <br>
+Info: {{info}}
+
+<h3>.getPage( name, callback)</h3>
+<a href="/{{page}}">{{page}}</a><br>
+Content: <br>
+{{content}} <br>
+
+<br>
+Page: <input type="text" name="page">
+<a href="" ng:click="getPage()">get</a>
+
+<h3>.putPage( name, body, data, cb)</h3>
+Content: <br>
+<textarea name="content" cols="50" rows="7"></textarea>
+<br>
+<a href="" ng:click="putPage()">put</a>
+
+<h3>.appendPage( name, body, data, cb)</h3>
+Append: <input name="add">
+<a href="" ng:click="appendPage()">append</a>
+
+<br><hr>
+API result: {{rest}} <br>
+{{result}}
+
+</div>
+
+
+
+---
+prefetched: true
+

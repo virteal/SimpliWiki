@@ -1,0 +1,17 @@
+[Unit]
+Description=SimpliWiki Personal (JeanHuguesRobert's wiki)
+Documentation=https://github.com/virteal/SimpliWiki
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/srv/SimpliWiki
+Environment="NODE_ENV=production"
+EnvironmentFile=/srv/SimpliWiki/.env
+ExecStart=/usr/bin/node /srv/simpli/src/main.js
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

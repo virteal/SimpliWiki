@@ -1,0 +1,12 @@
+To display a list of pages as a "cloud":
+
+DoCloud             -- no order, by references
+DoCloudPages        -- alphabetically ordered
+DoCloudFrequencies  -- frequent pages first
+DoCloudTags         -- "tag" related pages
+DoCloudVisits       -- by popularity/visits
+
+
+See also DoListReferences
+
+CategoryHelp

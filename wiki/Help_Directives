@@ -1,0 +1,20 @@
+Some pages include "directives", see HelpDirective.
+
+Although their meaning can vary, here are general guidelines about some of the more frequent directives. Together with some pages that use them.
+
++++cssStyle
+Either the name of a page with CSS code in it or the url (web address) of such a page.
+
+When specified in a page, this directive defines what style to apply to pages from now on. Note: use "cssStyle: no" to revert to the original style.
+
+When specified in AboutWiki, it defines what style to apply to all pages (until some page says otherwise, if ever).
+
+See also CssStyles
+ 
++++email
+an email address. ToDoExportToDropBox
+
++++password
+a password. ToDoExportToDropBox
+
+

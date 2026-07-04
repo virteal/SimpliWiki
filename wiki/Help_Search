@@ -1,0 +1,18 @@
+To find something in your wiki, go to HomePage and use the "Go to page" box at the bottom.
+
+In that box you can enter:
+- the full name of a page
+- a portion of a page's name
+- or anything that you remember from a page
+
+The search looks for what you told in all the pages that were visited recently, looking in their name first or else in their content.
+
+Note: * and ? are useful "wildcards" for "fuzzy" searches.
+
+Example:
+  DoSearch[help]
+  DoSearch[todo]
+
+See also DoListReferences & HelpCloud
+
+CategoryHelp

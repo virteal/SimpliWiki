@@ -1,0 +1,52 @@
+PrivateWiki
+
+You control the "openess" or "closeness" of your wiki. This is specially important when the name of your wiki is not a secret.
+
+You also control who can see what. See HelpPublicPages
+
+To change now the openess of your wiki, click on DoOpenWiki, DoMentorWiki or DoClosedWiki. Don't lock yourself out, see below.
+
+
+DoOpenWiki
+  PrivateOpenWiki -- very open wikis
+
+  In "very open" wikis, changes from both guests and members are "drafts" only if sent this way by the author, or else the changes are permanent.
+
+  Beware: this means that *anybody* can change *anything* in "very open" wikis!
+
+
+DoMentorWiki
+  PrivateMentorWiki -- open wikis 
+
+  "open" wikis require mentor approval to validate new members and changes to pages by guests. This is the "normal" set up.
+
+  Don't lock yourself out! Remember to register yourself as a mentor before closing the door. See SimpliWikiDoc
+
+
+DoClosedWiki
+  PrivateClosedWiki -- very closed wikis 
+
+  On such wikis, guests can mainly visit "Public" and "Guest" pages only, ie regular pages can be visited by members of the wiki only
+
+-----
+
+This page may contain some additional "directives" about your wiki. Valid content (all optional):
+
+Openness:
+- open: false for very closed wikis only
+- veryOpen: true or false
+- mentors: @abc @efg -- list mentors
+
+Look:
+- rows: less rows means bigger characters, try 20
+- cols: number of columns, default is 50
+- lang: either "en" or "fr" (english or french)
+- title: turn Anonymous into a nice title
+- fetch: lists "custom" pages, see HelpPrefetch
+- cssStyle: css page or url, see CssStyles
+
+CategoryHelp
+
+---
+fetch:  AngularHello
+

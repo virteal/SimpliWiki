@@ -1,0 +1,20 @@
+If you are a css expert, you can customize your wiki's look.
+
+This works using the "cssStyle" directive.
+
+That directive specifies either the name of a wiki page with CSS code in it or the url to some external CSS file.
+
+This wiki "default" CSS code is in simpliwiki.com/simpliwiki.css
+
+See SimpliWikiStyle, SimpliJsStyle, MatrixStyle & VirtealStyle for examples of customization. Test your style with TestCss. Find nice colors & patterns on colourlovers.com/
+
+See also DisplayModes
+
+!note! Mentors, please use a "prefetched: true" directive in CSS pages to make sure that the first page displayed does render using it when the wiki is restarted (applies to Angular pages too). See also "fetch" in AboutWiki
+
+
+
+---
+cssStyle: noStyle
+
+jeanhuguesrobert@ - 2011-01-28T01:11:00.488Z
