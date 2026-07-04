@@ -1,144 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>SimpliWiki, micro wikis for everybody about everything</title>
-  <meta name="viewport" content="width=device-width">
-  <link rel="icon" href="/simpliwiki-logo.svg" type="image/svg+xml">
-  <link rel="alternate" type="application/x-wiki" title="Edit this page!" href="/HelpSimpliWiki">
-  <style>
-    body {
-      font-family: "Roboto Mono", "Fira Code", "Consolas", "Monaco", "Lucida Console", "Courier New", monospace;
-      font-size: 14px;
-      line-height: 1.4;
-      margin: 0;
-      padding: 0;
-    }
-    .background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      opacity: 0.1;
-      z-index: -1;
-    }
-    .sw_header {
-      padding: 20px;
-      background: rgba(255,255,255,0.9);
-      border-bottom: 2px solid #1e90ff;
-    }
-    .sw_header_content {
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .sw_logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .sw_logo img {
-      width: 64px;
-      height: 64px;
-    }
-    #slogan strong {
-      font-size: 24px;
-      color: #1e90ff;
-    }
-    #slogan em {
-      color: #1e90ff;
-    }
-    #tagline {
-      text-align: center;
-    }
-    #tagline h1 {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-    #tagline a {
-      color: #1e90ff;
-      text-decoration: none;
-    }
-    .sw_boxed {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 30px;
-      background: rgba(255,255,255,0.95);
-      border: 2px solid #1e90ff;
-      border-radius: 8px;
-    }
-    .sw_code {
-      margin: 20px 0;
-      padding: 15px;
-      background: #f5f5f5;
-      border: 1px solid #ddd;
-    }
-    form {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    input[type="text"] {
-      padding: 10px 15px;
-      font-size: 16px;
-      font-family: inherit;
-      border: 2px solid #1e90ff;
-      border-radius: 4px;
-      width: 200px;
-    }
-    input[type="submit"] {
-      padding: 10px 20px;
-      font-size: 16px;
-      font-family: inherit;
-      font-weight: bold;
-      background: #1e90ff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    input[type="submit"]:hover {
-      background: #0c7cd5;
-    }
-    .sw_footer {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-    }
-    .sw_footer a {
-      color: #1e90ff;
-      text-decoration: none;
-      margin: 0 15px;
-    }
-    .sw_footer a:hover {
-      text-decoration: underline;
-    }
-    #version {
-      text-align: center;
-      margin: 20px 0;
-    }
-    #version h5 {
-      color: #666;
-      font-size: 14px;
-    }
-    .i18n {
-      display: none;
-    }
-    #login-buttons {
-      text-align: right;
-      padding: 10px;
-    }
-    #login-buttons a {
-      color: #1e90ff;
-      text-decoration: none;
-    }
-  </style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>SimpliWiki, micro wikis for everybody about everything</title>
+<meta name="viewport" content="width=device-width">
+<link rel="icon" href="/simpliwiki-logo.svg" type="image/svg+xml">
+<link rel="alternate" type="application/x-wiki" title="Edit this page!" href="/HelpSimpliWiki">
+<link rel="stylesheet" href="/simpliwiki.css" type="text/css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -149,19 +18,61 @@ var sw_invite_mode = true
 var sw_version = "31"
 </script>
 
+<script>
+try{ loadfire() }catch( err ){ alert( "no loadfire()") }
+
+var De = true
+var bug = (window.console && console.log
+  && function bug( m ){ console.log( "index.html: " + m)})
+|| (De = false)
+
+var Sw = {}
+var Session = {config: {lang: "en"}}
+
+Sw.i18n = {
+  en: {
+    "version msg":
+    "Alpha " + sw_version + " version, please use for tests only"
+  },
+  fr: {
+    "go to ": "revenir vers ",
+    " or...": " ou bien...",
+    "version msg":
+    "Alpha " + sw_version + ", pour tests seulement, merci"
+  }
+}
+
+Session.i18n = function( msg ){
+  var lang = this.config.lang
+  De&&bug( "lang: " + lang)
+  if( !Sw.i18n[lang] ){
+    Sw.i18n[lang] = {}
+  }
+  return Sw.i18n[lang][msg]
+  || Sw.i18n["en"][msg]
+  || msg
+}
+
+function clearDefault( el ){
+  if( el.defaultValue == el.value ){
+    el.value = ""
+  }
+}
+</script>
+
 <div id="header" class="sw_header">
   <div class="sw_header_content">
-    <div class="sw_logo">
+    <div style="float:left;" class="sw_logo sw_boxed">
       <div style="float:left;">
         <img src="/simpliwiki-logo.svg" width="64" height="64" alt="SimpliWiki">
       </div>
-      <div id="slogan">
+      <div id="slogan" style="min-height:64px; height:64px;">
         <strong>Simpl<em>i</em>Wiki</strong>
         <br>just wikis
       </div>
     </div>
     <span id="tagline">
-      <h1>"It's super easy to create <a href="https://en.wikipedia.org/wiki/Wiki">wikis</a></h1>
+      <h1 id="tagline">"It's super easy to create <a href="https://en.wikipedia.org/wiki/Wiki">wikis</a></h1>
       <small><i>a tribute to <a href="https://c2.com/cgi/wiki?WardCunningham">Ward Cunningham</a></i></small>
     </span>
   </div>
@@ -177,6 +88,7 @@ var sw_version = "31"
 </div>
 
 <br><br>
+
 
 <div id="sw_box" class="sw_boxed">
 
@@ -201,6 +113,12 @@ wiki
  <span id="fr_2nd" class="i18n">&nbsp;</span>
 </div>
 
+<script>var sw_cookies = "undefined" </script>
+
+<script>
+loadfire( "sw_comeback.js")
+</script>
+
 <div id="who" class="sw_code" style="text-align: left">
  <span id="1st">&nbsp;</span>
  <span id="fr_1st" class="i18n">&nbsp;</span>
@@ -215,6 +133,15 @@ wiki
 </div>
 
 <div id="fb-root"></div>
+<script>
+var sw_ctx = {twid:""};
+</script>
+
+<script src="/sw_signin.js"></script>
+
+<script>
+loadfire(); loadfire.event( function( fire ){if( !window.onFooterDisplay ) return;onFooterDisplay( true, true); return true })
+</script>
 
 </div>
 
@@ -224,7 +151,7 @@ wiki
 </div>
 <br>
 
-<div id="footer" class="sw_footer">
+<div id="footer" class="sw_footer sw_boxed">
 
 <a href="https://simplijs.fractavolta.com" title="SimpliJs Wiki Engine">
 SimpliJs Docs</a>
@@ -251,30 +178,26 @@ A&nbsp;propos.</a>
 </div>
 
 <script>
-function clearDefault( el ){
-  if( el.defaultValue == el.value ){
-    el.value = ""
-  }
-}
-
-document.addEventListener( 'DOMContentLoaded', function(){
+$(document).ready( function(){
   var lang = "en"
-  // Try our best to determine lang, fr or eng only
   lang = navigator.language ? navigator.language : navigator.userLanguage
   lang = lang.substr( 0, 2)
-  if( lang && (lang == "en" || lang == "fr") ){
-    // Patch localized elements
-    document.querySelectorAll(".i18n").forEach( function( elem){
-      var id = elem.id
-      if( id.substr( 0, 3) != "fr_") return
-      var content = elem.innerHTML
-      var targetId = id.substr( 3)
-      var target = document.getElementById( targetId)
-      if( target ) target.innerHTML = content
+  if( lang ){
+    Session.config.lang = lang
+    De&&bug( "lang: " + lang)
+    $(".i18n").each( function( _, elem){
+      var id = this.id
+      De&&bug( "i18n: " + id)
+      if( id.substr( 0, 3) != lang ){ return }
+      var content = $("#" + id).html()
+      $("#" + id.substr( 3)).html( content)
     })
-    if( lang == "fr" ) {
-      document.querySelector("#version h5").textContent = "Alpha"
-    }
+  }
+  if( sw_invite_mode ){
+    var msg = Session.i18n( "version msg")
+    $("#version").empty().append(
+      "<h5>" + msg + "</h5>"
+    )
   }
 })
 </script>
