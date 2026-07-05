@@ -1,26 +1,29 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SimpliWiki, micro wikis for everybody about everything</title>
-<meta name="viewport" content="width=device-width">
-<link rel="icon" href="/simpliwiki-logo.svg" type="image/svg+xml">
-<link rel="alternate" type="application/x-wiki" title="Edit this page!" href="/HelpSimpliWiki">
-<link rel="stylesheet" href="/simpliwiki.css" type="text/css">
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <title>SimpliWiki, micro wikis for everybody about everything</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="/yanugred16.png" type="image/png">
+  <link rel="alternate" type="application/x-wiki" title="Edit this page!" href="HelpSimpliWiki">
+  <link rel="stylesheet" href="/style.css" type="text/css">
+  <script type="text/javascript" src="/sw_load.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 </head>
 
 <body>
-<div id="background" class="background"></div>
+<div id="background" class="background">
+</div>
 
 <script>
 var sw_invite_mode = true
-var sw_version = "31"
+var sw_version = "30"
 </script>
 
 <script>
 try{ loadfire() }catch( err ){ alert( "no loadfire()") }
 
+// My debug darling, see http://virteal.com/DebugDarling
 var De = true
 var bug = (window.console && console.log
   && function bug( m ){ console.log( "index.html: " + m)})
@@ -32,13 +35,13 @@ var Session = {config: {lang: "en"}}
 Sw.i18n = {
   en: {
     "version msg":
-    "Alpha " + sw_version + " version, please use for tests only"
+    "Chrome preview, Alpha " + sw_version + " version (december 2014), please use for tests only"
   },
   fr: {
     "go to ": "revenir vers ",
     " or...": " ou bien...",
     "version msg":
-    "Alpha " + sw_version + ", pour tests seulement, merci"
+    "Prototype Chrome, version Alpha " + sw_version + " (12/2014), pour tests seulement, merci"
   }
 }
 
@@ -60,11 +63,13 @@ function clearDefault( el ){
 }
 </script>
 
+<img src="/alpha.gif" type="img/gif" style="position:absolute; top:0; right:0;">
+
 <div id="header" class="sw_header">
   <div class="sw_header_content">
     <div style="float:left;" class="sw_logo sw_boxed">
       <div style="float:left;">
-        <img src="/simpliwiki-logo.svg" width="64" height="64" alt="SimpliWiki">
+        <img src="/yanugred64.png" width="64" height="64" type="image/png" alt="YanUg"/>
       </div>
       <div id="slogan" style="min-height:64px; height:64px;">
         <strong>Simpl<em>i</em>Wiki</strong>
@@ -72,8 +77,8 @@ function clearDefault( el ){
       </div>
     </div>
     <span id="tagline">
-      <h1 id="tagline">"It's super easy to create <a href="https://en.wikipedia.org/wiki/Wiki">wikis</a></h1>
-      <small><i>a tribute to <a href="https://c2.com/cgi/wiki?WardCunningham">Ward Cunningham</a></i></small>
+      <h1 id="tagline"><a href="SimpliWiki">"</a>It's super easy to create <a href="https://en.wikipedia.org/wiki/Wiki">wikis</a></h1>
+      <small><i>a tribute to <a href="c2/WhyWikiWorks">Ward Cunningham</a></i></small>
     </span>
   </div>
 </div>
@@ -83,28 +88,27 @@ function clearDefault( el ){
 <br>que des wikis
 </div>
 <div id="fr_tagline" class="i18n">
-<h1>"C'est facile de créer des <a href="https://fr.wikipedia.org/wiki/Wiki">wikis</a></h1>
-<small><i>un hommage à Ward Cunningham</i></small>
+<h1><a href="SimpliWiki">"</a>C'est facile de créer des <a href="https://fr.wikipedia.org/wiki/Wiki">wikis</a></h1>
+<small><i>un hommage à M. <a href="https://fr.wikipedia.org/wiki/Ward_Cunningham">Ward Cunningham</a></i></small>
 </div>
 
 <br><br>
-
 
 <div id="sw_box" class="sw_boxed">
 
 <div id="post" class="sw_code">
 <form method="POST" accept-charset="utf-8" action="/HomePage"><br>
 wiki
-  <input id="text" name="text" title="click and type the wiki's name (optional)" value="a wiki" onfocus="clearDefault( this)">
-  <input type="submit" name="post" value="wiki!" class="sw_submit" id="wiki-cta">
+  <input id="text" name="text" title="click and type the wiki's name (optional)" value="a wiki" onfocus="clearDefault( this)"/>
+  <input type="submit" name="post" value="wiki!" class="sw_submit" id="wiki-cta"/>
 </form>
 </div>
 
 <div id="fr_post" class="i18n">
 <form method="POST" accept-charset="utf-8" action="/HomePage"><br>
 wiki
-  <input id="text" name="text" title="cliquer et taper le nom du wiki (optionnel)" value="un wiki" onfocus="clearDefault( this)">
-  <input type="submit" name="post" value="wiki !" class="sw_submit" id="wiki-cta">
+  <input id="text" name="text" title="cliquer et taper le nom du wiki (optionnel)" value="un wiki" onfocus="clearDefault( this)"/>
+  <input type="submit" name="post" value="wiki !" class="sw_submit" id="wiki-cta"/>
 </form>
 </div>
 
@@ -153,54 +157,67 @@ loadfire(); loadfire.event( function( fire ){if( !window.onFooterDisplay ) retur
 
 <div id="footer" class="sw_footer sw_boxed">
 
-<a href="https://simplijs.fractavolta.com" title="SimpliJs Wiki Engine">
-SimpliJs Docs</a>
+<a href="/sandbox" title="Visit the sandbox wiki">
+Try&nbsp;first.</a>
 
-<a href="/HomePage" title="Learn about SimpliWiki">
+<a href="/HomePage" title="Visit the wiki about SimpliWiki">
 Learn&nbsp;more.</a>
 
-<a href="/SimpliWiki" title="What is SimpliWiki">
+<a href="/ReadAboutSimpliWiki" title="What is SimpliWiki">
 About&nbsp;this.</a>
 
 </div>
 
 <div id="fr_footer" class="sw_footer i18n">
 
-<a href="https://simplijs.fractavolta.com" title="Documentation SimpliJs">
-Docs</a>
+<a href="/fr/entrainement" title="Visiter le wiki d'entrainement">
+Essayer.</a>
 
-<a href="/HomePage" title="SimpliWiki?">
+<a href="/fr/HomePage" title="Visiter le wiki au sujet de SimpliWiki">
 SimpliWiki&nbsp;?</a>
 
-<a href="/SimpliWiki" title="Qu'est-ce que SimpliWiki ?">
-A&nbsp;propos.</a>
+<a href="/fr/secret" title="C'est gratuit !">
+Le&nbsp;votre !</a>
+
+<a href="/LireSurLesOffres" title="gratuites et payantes">
+Nos&nbsp;offres.</a>
+
+<a href="/fr/LireSurSimpliWiki" title="Qu'est-ce que SimpliWiki ?">
+A propos.</a>
 
 </div>
 
 <script>
 $(document).ready( function(){
   var lang = "en"
+  // Try our best to determine lang, fr or eng only, sorry folks
   lang = navigator.language ? navigator.language : navigator.userLanguage
   lang = lang.substr( 0, 2)
   if( lang ){
     Session.config.lang = lang
     De&&bug( "lang: " + lang)
+    // Patch localized elements
     $(".i18n").each( function( _, elem){
       var id = this.id
       De&&bug( "i18n: " + id)
-      if( id.substr( 0, 3) != lang ){ return }
+      if( id.substr( 0, 2) != lang ){ return }
       var content = $("#" + id).html()
       $("#" + id.substr( 3)).html( content)
     })
   }
-  if( sw_invite_mode ){
+  if( true || sw_invite_mode ){
     var msg = Session.i18n( "version msg")
+    "Chrome preview, Alpha " + sw_version + " version (Dec 2014), please use for tests only"
     $("#version").empty().append(
       "<h5>" + msg + "</h5>"
     )
   }
 })
 </script>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<a href="https://virteal.com/">&copy;2006-2014 Virteal</a>
 
 </body>
 </html>
