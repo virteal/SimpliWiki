@@ -2,3 +2,8 @@
 *.sqlite-shm
 *.sqlite-wal
 .tmp
+
+# Environment secrets and deployment configuration
+.env
+.env.*
+!.env.example
